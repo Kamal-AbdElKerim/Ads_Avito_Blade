@@ -57,4 +57,16 @@ class User extends Authenticatable
     {
         return $this->hasMany(message::class, 'ReceiverID');
     }
+    public function favorites()
+    {
+        return $this->hasMany(message::class, 'UserID');
+    }
+
+    public function notifications()
+    {
+        return $this->hasMany(Notification::class);
+    }
+   
+
+
 }

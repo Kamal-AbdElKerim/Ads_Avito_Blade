@@ -290,7 +290,7 @@
                   <li >
                       <form id="logoutForm" action="{{ route('logout') }}" method="post">
                           @csrf
-                          <a href="#" onclick="document.getElementById('logoutForm').submit();" class="{{ (Route::currentRouteName() == 'logout') ? 'active_auth' : '' }}"><i class="lni lni-enter"></i> Logout</a>
+                          <a href="javascript:void(0)" onclick="document.getElementById('logoutForm').submit();" class="{{ (Route::currentRouteName() == 'logout') ? 'active_auth' : '' }}"><i class="lni lni-enter"></i> Logout</a>
                       </form>
                       
                   </li>

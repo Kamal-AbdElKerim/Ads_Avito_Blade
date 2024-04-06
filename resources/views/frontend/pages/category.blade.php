@@ -18,7 +18,17 @@
         </div>
     </div>
     <!-- End Breadcrumbs -->
-
+    @if(session('success'))
+    <script>
+        Swal.fire({
+            icon: 'success',
+            title: 'Success!',
+            text: '{{ session('success') }}',
+            showConfirmButton: false,
+            timer: 1500 // Close alert after 1.5 seconds
+        });
+    </script>
+@endif
     <!-- Start Category -->
     <section class="category-page section">
         <div class="container">
@@ -171,10 +181,21 @@
                                                                     class="lni lni-map-marker">
                                                                 </i>{{ $ad->City }}</a></p>
                                                         <ul class="info">
-                                                            <li class="price">{{ $ad->Price }}</li>
-                                                            <li class="like"><a href="javascript:void(0)"><i
-                                                                        class="lni lni-heart"></i></a>
+                                                            <li class="price">{{ $ad->Price }} MAD</li>
+                                                            @if ($ad->favorites->contains('UserID', Auth()->id()))
+                                                            <li class="like">
+                                                                <a href="{{ route('remove_favorite', $ad->id) }}">
+                                                                    <i class="fa-solid fa-heart" style="color: #dd3636;"></i>
+                                                                </a>
                                                             </li>
+                                                        @else
+                                                            <li class="like">
+                                                                <a href="{{ route('favorite', $ad->id) }}">
+                                                                    <i class="lni lni-heart"></i>
+                                                                </a>
+                                                            </li>
+                                                        @endif
+                                                        
                                                         </ul>
                                                     </div>
                                                 </div>

@@ -48,14 +48,14 @@
     <!-- /End Preloader -->
 
     <!-- Start Header Area -->
-    <header class="header navbar-area">
+    <header class="header navbar-area  position-fixed  top-0  left-0  bg-light">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-12">
                     <div class="nav-inner">
-                        <nav class="navbar navbar-expand-lg">
+                        <nav class="navbar navbar-expand-lg    ">
                             <a class="navbar-brand" href="index.html">
-                                <img src=" {{URL::asset('frontend/assets/images/logo/logo.svg')}}" alt="Logo">
+                                <img src=" {{URL::asset('frontend\assets\ADS-Logo_RGB.png')}}" height="50px"  alt="Logo">
                             </a>
                             <button class="navbar-toggler mobile-menu-btn" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -74,70 +74,13 @@
                                         <a class="{{ (Route::currentRouteName() == 'Category') ? 'active' : '' }}" href="{{ route('Category') }}"  aria-label="Toggle navigation">Categories</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class=" dd-menu collapsed" href="javascript:void(0)"
-                                            data-bs-toggle="collapse" data-bs-target="#submenu-1-3"
-                                            aria-controls="navbarSupportedContent" aria-expanded="false"
-                                            aria-label="Toggle navigation">Listinsgs</a>
+                                        <a class=" dd-menu collapsed" href="{{ route('ProfileSettings') }}"
+                                         
+                                            aria-label="Toggle navigation">Profile</a>
                                       
                                     </li>
-                                    <li class="nav-item">
-                                        <a class="dd-menu collapsed" href="javascript:void(0)"
-                                            data-bs-toggle="collapse" data-bs-target="#submenu-1-4"
-                                            aria-controls="navbarSupportedContent" aria-expanded="false"
-                                            aria-label="Toggle navigation">Pages</a>
-                                        <ul class="sub-menu mega-menu collapse" id="submenu-1-4">
-                                            <li class="single-block">
-                                                <ul>
-                                                    <li class="mega-menu-title">Essential Pages</li>
-                                                    <li class="nav-item"><a href="about-us.html">About Us</a></li>
-                                                    <li class="nav-item"><a href="item-details.html">Ads Details</a></li>
-                                                    <li class="nav-item"><a href="post-item.html">Ads Post</a></li>
-                                                    <li class="nav-item"><a href="pricing.html">Pricing Table</a></li>
-                                                    <li class="nav-item active"><a href="registration.html">Sign Up</a></li>
-                                                    <li class="nav-item"><a href="login.html">Sign In</a></li>
-                                                    <li class="nav-item"><a href="contact.html">Contact Us</a></li>
-                                                    <li class="nav-item"><a href="faq.html">FAQ</a></li>
-                                                    <li class="nav-item"><a href="404.html">Error Page</a></li>
-                                                    <li class="nav-item"><a href="mail-success.html">Mail Success</a>
-                                                    </li>
-                                                    <li class="nav-item"><a href="coming-soon.html">Comming Soon</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li class="single-block">
-                                                <ul>
-                                                    <li class="mega-menu-title">Dashboard</li>
-                                                    <li class="nav-item"><a href="dashboard.html">Account Overview</a>
-                                                    </li>
-                                                    <li class="nav-item"><a href="profile-settings.html">My Profile</a>
-                                                    </li>
-                                                    <li class="nav-item"><a href="my-items.html">My Ads</a></li>
-                                                    <li class="nav-item"><a href="favourite-items.html">Favorite Ads</a>
-                                                    </li>
-                                                    <li class="nav-item"><a href="post-item.html">Ad post</a></li>
-                                                    <li class="nav-item"><a href="bookmarked-items.html">Bookmarked Ad</a>
-                                                    </li>
-                                                    <li class="nav-item"><a href="messages.html">Messages</a></li>
-                                                    <li class="nav-item"><a href="delete-account.html">Close account</a>
-                                                    </li>
-                                                    <li class="nav-item"><a href="invoice.html">Invoice</a></li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class=" dd-menu collapsed" href="javascript:void(0)"
-                                            data-bs-toggle="collapse" data-bs-target="#submenu-1-5"
-                                            aria-controls="navbarSupportedContent" aria-expanded="false"
-                                            aria-label="Toggle navigation">Blog</a>
-                                        <ul class="sub-menu collapse" id="submenu-1-5">
-                                            <li class="nav-item"><a href="blog-grid-sidebar.html">Blog Grid Sidebar</a>
-                                            </li>
-                                            <li class="nav-item"><a href="blog-single.html">Blog Single</a></li>
-                                            <li class="nav-item"><a href="blog-single-sidebar.html">Blog Single
-                                                    Sibebar</a></li>
-                                        </ul>
-                                    </li>
+                                
+                                 
                                 </ul>
                             </div> <!-- navbar collapse -->
                             <div class="login-button">
@@ -146,7 +89,7 @@
                                     <li >
                                         <form id="logoutForm" action="{{ route('logout') }}" method="post">
                                             @csrf
-                                            <a href="#" onclick="document.getElementById('logoutForm').submit();" class="{{ (Route::currentRouteName() == 'logout') ? 'active_auth' : '' }}"><i class="lni lni-enter"></i> Logout</a>
+                                            <a href="javascript:void(0)" onclick="document.getElementById('logoutForm').submit();" class="{{ (Route::currentRouteName() == 'logout') ? 'active_auth' : '' }}"><i class="lni lni-enter"></i> Logout</a>
                                         </form>
                                         
                                     </li>
@@ -253,8 +196,8 @@
                     <div class="single-footer f-contact">
                         <h3>Contact</h3>
                         <ul>
-                            <li>23 New Design Str, Lorem Upsum 10<br> Hudson Yards, USA</li>
-                            <li>Tel. +(123) 1800-567-8990 <br> Mail. support@classigrids.com</li>
+                            <li>23 New Design Str, Lorem Upsum 10<br> safi, MAR</li>
+                            <li>Tel. +(123) 1800-567-8990 </li>
                         </ul>
                     </div>
                     <!-- End Single Widget -->
@@ -263,36 +206,7 @@
         </div>
     </div>
     <!--/ End Footer Middle -->
-    <!-- Start Footer Bottom -->
-    <div class="footer-bottom">
-        <div class="container">
-            <div class="inner">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="content">
-                            <ul class="footer-bottom-links">
-                                <li><a href="javascript:void(0)">Terms of use</a></li>
-                                <li><a href="javascript:void(0)"> Privacy Policy</a></li>
-                                <li><a href="javascript:void(0)">Advanced Search</a></li>
-                                <li><a href="javascript:void(0)">Site Map</a></li>
-                                <li><a href="javascript:void(0)">Information</a></li>
-                            </ul>
-                            <p class="copyright-text">Designed and Developed by <a href="https://graygrids.com/"
-                                    rel="nofollow" target="_blank">GrayGrids</a>
-                            </p>
-                            <ul class="footer-social">
-                                <li><a href="javascript:void(0)"><i class="lni lni-facebook-filled"></i></a></li>
-                                <li><a href="javascript:void(0)"><i class="lni lni-twitter-original"></i></a></li>
-                                <li><a href="javascript:void(0)"><i class="lni lni-youtube"></i></a></li>
-                                <li><a href="javascript:void(0)"><i class="lni lni-linkedin-original"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- End Footer Middle -->
+ 
 </footer>
 <!--/ End Footer Area -->
 

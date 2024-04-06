@@ -12,9 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('favorites', function (Blueprint $table) {
+            $table->id();
             $table->foreignId('UserID')->constrained('users')->onDelete('CASCADE');
             $table->foreignId('AdID')->constrained('ads')->onDelete('CASCADE');
-            $table->primary(['UserID', 'AdID']);
             $table->timestamps();
         });
     }

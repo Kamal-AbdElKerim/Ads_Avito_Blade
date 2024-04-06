@@ -3,19 +3,20 @@
 namespace App\Http\Controllers;
 
 
+use App\Models\ad;
+use App\Models\tag;
+use App\Models\User;
+use App\Models\image;
+use App\Models\ad_tag;
 use Livewire\Component;
 use App\Models\categorie;
+use App\Models\Notification;
 use Livewire\WithFileUploads;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Validate;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
-use App\Models\ad;
-use App\Models\tag;
-use App\Models\User;
-use App\Models\image;
-use App\Models\ad_tag;
 
 // #[Layout('frontend.layouts.app')]    
 #[Layout('frontend.pages.pages_settings.layout_settings')]    
@@ -216,20 +217,26 @@ class AddAds extends Component
 
             $this->lastInsertedId = $ad->id;
 
+            // add Notification
+
+            Notification::create([
+                'user_id' => Auth()->id(),
+                'type' => 'info',
+                'message' => 'Your ad has been saved You must wait for the admin to accept your Ad.',
+            ]);
+
             // Add images
 
             foreach ($this->photos as $photo) {
 
-                $url = Storage::putFile('public/Ads', $photo['path']); // Access the path directly
+                $url = Storage::putFile('public/Ads', $photo['path']); 
     
-                // Create a new image record
                 $image = new image();
                 $image->ImageURL = $url;
-                $image->AdID = $this->lastInsertedId; // Ensure $lastInsertedId is accessible here
+                $image->AdID = $this->lastInsertedId; 
                 $image->save();
             }
     
-            // Reset the photos array after saving
             $this->photos = [];
 
         // Add tags

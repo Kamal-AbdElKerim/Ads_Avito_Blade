@@ -4,7 +4,9 @@ use App\Http\Controllers\AddAds;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\favoriteController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Dashboard\AdsController;
 use App\Http\Controllers\Dashboard\UserController;
@@ -39,6 +41,12 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/change-password', [LoginController::class, 'changePassword'])->name('change-password');
     Route::get('/post/ads', AddAds::class)->name('post.ads');
     Route::get('/MyAds', AddAds::class)->name('MyAds');
+    Route::get('/favorite/{id}', [favoriteController::class, 'favorite'])->name('favorite');
+    Route::get('/remove_favorite/{id}', [favoriteController::class, 'remove_favorite'])->name('remove_favorite');
+    Route::get('/list_favorite', [favoriteController::class, 'list_favorite'])->name('list_favorite');
+    Route::get('/Dashboard_user', [NotificationController::class, 'Dashboard_user'])->name('Dashboard_user');
+    Route::get('/remove_notification/{id}', [NotificationController::class, 'remove_notification'])->name('remove_notification');
+
 });
 
 Route::group(['middleware' => 'guest'], function () {

@@ -3,11 +3,12 @@
 namespace App\Http\Controllers;
 
 
+use App\Models\Ad;
 use Livewire\Component;
 use Livewire\Attributes\On;
+use App\Models\Notification;
 use Livewire\WithPagination;
 use Livewire\Attributes\Layout;
-use App\Models\Ad;
 use Illuminate\Support\Facades\Auth;
 
 #[Layout('frontend.pages.pages_settings.layout_settings')]    
@@ -64,9 +65,18 @@ class MyAds extends Component
 
     public function deleteAds()
     {
-        $ad = Ad::findOrFail($this->id_ads);
-        $ad->delete();
+        $ad = ad::findOrFail($this->id_ads);
 
+        Notification::create([
+            'user_id' => Auth()->id(),
+            'type' => 'info',
+             'message' => "Your ad ({$ad->Title}) has been deleted.",
+
+        ]);
+
+        $ad->status = 'sold';
+
+        $ad->save();
         $this->dispatch('prompt-confi-deleted');
         $this->reset(['id_ads']);
     }
@@ -90,6 +100,13 @@ class MyAds extends Component
         $validatedData = $this->validate();
 
         $query = Ad::findOrFail($this->id_ads);
+
+          Notification::create([
+            'user_id' => Auth()->id(),
+            'type' => 'info',
+            'message' => "Your ad ({$query->Title}) has been updated.",
+        ]);
+
         $query->update([
             'Title' => $this->Title,
             'Price' => $this->Price,
