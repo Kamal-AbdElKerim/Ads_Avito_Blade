@@ -155,7 +155,7 @@
                                 <li><a class="{{ (Route::currentRouteName() == 'MyAds') ? 'active' : '' }}" href="{{ route('MyAds') }}" ><i class="lni lni-bolt-alt"></i> My Ads</a></li>
                                 <li><a class="{{ (Route::currentRouteName() == 'list_favorite') ? 'active' : '' }}" href="{{ route('list_favorite') }}"><i class="lni lni-heart"></i> Favourite ads</a></li>
                                 <li><a class="{{ (Route::currentRouteName() == 'post.ads') ? 'active' : '' }}" href="{{ route('post.ads') }}" ><i class="lni lni-circle-plus"></i> Post An Ad</a></li>
-                                {{-- <li><a class="{{ (Route::currentRouteName() == 'Messages') ? 'active' : '' }}" href="{{ route('Messages') }}"><i class="lni lni-envelope"></i> Messages</a></li> --}}
+                                <li><a class="{{ (Route::currentRouteName() == 'Messages_list') ? 'active' : '' }}" href="{{ route('Messages_list') }}"><i class="lni lni-envelope"></i> Messages</a></li>
                             </ul>
                             <div class="button">
                                 {{-- <a class="btn" href="javascript:void(0)">Logout</a> --}}
@@ -183,8 +183,8 @@
                 @include('frontend.pages.favorites')
             @elseif(Route::currentRouteName() === 'Dashboard_user') 
                 @include('frontend.pages.Dashboard')
-            {{-- @elseif(Route::currentRouteName() === 'Messages') 
-                @livewire('Frontend.Messenger.AllMessenger') --}}
+                @elseif(Route::currentRouteName() === 'Messages_list') 
+                @include('frontend.pages.Chat')
           
             @endif
   

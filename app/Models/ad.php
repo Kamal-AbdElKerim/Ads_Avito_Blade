@@ -52,6 +52,11 @@ class ad extends Model
         return $this->hasMany(favorite::class, 'AdID');
     }
 
+    public function conversation()
+    {
+        return $this->hasMany(conversation::class,'AD_id');
+    }
+
       
 
 

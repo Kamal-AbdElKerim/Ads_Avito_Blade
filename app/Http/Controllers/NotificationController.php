@@ -18,7 +18,7 @@ class NotificationController extends Controller
         $num_ads_sold = ad::where('UserID',Auth()->id())->where('status','sold')->get();
         $ads = Ad::with(['images'])
           ->where('UserID',Auth()->id())
-          ->orderByDesc('id')
+          ->latest('created_at')
           ->limit(4)
           ->get();
         

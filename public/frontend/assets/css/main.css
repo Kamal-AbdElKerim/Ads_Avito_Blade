@@ -4564,13 +4564,21 @@ ol {
   border-radius: 50%;
 }
 
+.toggle_user{
+  background-color: #c5ebff;
+}
+.user_hover:hover{
+  background-color: #c5ebff !important;
+}
+
 .messages-body .chat-list .single-chat-head li.left .text {
   background: #f3f2fc;
-  padding: 30px;
+  padding: 5px 20px;
   font-size: 16px;
   line-height: 25px;
   color: #666;
-  border-radius: 6px;
+  border-radius: 18px;
+  word-wrap: break-word;
   position: relative;
   font-weight: 400;
   font-family: 'Jost', sans-serif;
@@ -4594,10 +4602,11 @@ ol {
   font-size: 14px;
 }
 
-.messages-body .chat-list .single-chat-head li.right {
+/* .messages-body .chat-list .single-chat-head li.right {
   padding: 0;
   padding-right: 75px;
-}
+  padding-left: 75px;
+} */
 
 .messages-body .chat-list .single-chat-head li.right img {
   height: 50px;
@@ -4605,17 +4614,18 @@ ol {
   display: block;
   position: absolute;
   right: 0;
-  bottom: 0;
+  bottom: 19px;
   border-radius: 50%;
 }
 
 .messages-body .chat-list .single-chat-head li.right .text {
-  background: #d7daf1;
-  padding: 30px;
+  background: #13239a;
+  padding: 5px 20px;
   font-size: 16px;
   line-height: 25px;
-  color: #666;
-  border-radius: 6px;
+  color: #ffffff;
+  border-radius: 18px;
+  word-wrap: break-word;
   position: relative;
   font-weight: 400;
   font-family: 'Jost', sans-serif;

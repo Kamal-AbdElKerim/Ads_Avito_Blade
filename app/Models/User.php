@@ -48,9 +48,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function sentMessages()
+    public function messages()
     {
-        return $this->hasMany(message::class, 'SenderID');
+        return $this->hasMany(message::class, 'sender_id');
     }
 
     public function receivedMessages()
@@ -65,6 +65,21 @@ class User extends Authenticatable
     public function notifications()
     {
         return $this->hasMany(Notification::class);
+    }
+
+    public function ads()
+    {
+        return $this->hasMany(Ad::class, 'UserID');
+    }
+
+    public function conversations1()
+    {
+        return $this->hasMany(Conversation::class, 'user_1');
+    }
+
+    public function conversations2()
+    {
+        return $this->hasMany(Conversation::class, 'user_2');
     }
    
 

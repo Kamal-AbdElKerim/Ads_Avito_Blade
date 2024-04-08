@@ -33,7 +33,7 @@ class CategoryController extends Component
 
     public function render()
     {
-        $adsQuery = ad::latest()->with('favorites')->where('status','approved');
+        $adsQuery = ad::latest()->with('favorites')->where('status','approved')->latest('created_at');
 
         if ($this->idCategory) {
             $adsQuery->where('CategoryID', $this->idCategory);

@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\AddAds;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ChatController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\MessageController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\favoriteController;
 use App\Http\Controllers\Auth\LoginController;
@@ -46,6 +48,18 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/list_favorite', [favoriteController::class, 'list_favorite'])->name('list_favorite');
     Route::get('/Dashboard_user', [NotificationController::class, 'Dashboard_user'])->name('Dashboard_user');
     Route::get('/remove_notification/{id}', [NotificationController::class, 'remove_notification'])->name('remove_notification');
+    
+    
+    Route::get('/Messages_list', [ChatController::class, 'messagesList'])->name('Messages_list');
+    Route::post('/add_Message', [ChatController::class, 'addMessage'])->name('add_Message');
+    Route::get('/user_message/{user_id}', [ChatController::class, 'userMessages'])->name('user_message');
+    Route::get('/messages-list-json',[ChatController::class, 'messagesList_json'] )->name('messages.list.json');
+
+   
+
+
+
+
 
 });
 

@@ -14,7 +14,7 @@ class HomeController extends Controller
 
         $ads = Ad::with(['users','categories', 'images', 'favorites'])
           ->where('status','approved')
-          ->orderByDesc('id')
+          ->latest('created_at')
           ->limit(6)
           ->get();
 

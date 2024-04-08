@@ -207,7 +207,7 @@
                 <li class="{{ $status === 'rejected' ? 'active' : '' }}" style="cursor: pointer">
                     <a wire:click="setStatus('rejected')">Rejected </a>
                 </li>
-                <li class="{{ $status === 'rejected' ? 'active' : '' }}" style="cursor: pointer">
+                <li class="{{ $status === 'sold' ? 'active' : '' }}" style="cursor: pointer">
                     <a wire:click="setStatus('sold')">Sold </a>
                 </li>
             </ul>

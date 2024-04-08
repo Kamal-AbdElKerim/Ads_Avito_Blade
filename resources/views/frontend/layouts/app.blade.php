@@ -26,6 +26,8 @@
     <link rel="stylesheet" href="{{URL::asset('frontend/assets/css/main.css')}}" />
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="//unpkg.com/alpinejs" defer></script>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
 
 
 
@@ -222,6 +224,7 @@
 <script src="{{URL::asset('frontend/assets/js/main.js')}}"></script>
 <script src="https://kit.fontawesome.com/e9ea9ee727.js" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
 
 
 
