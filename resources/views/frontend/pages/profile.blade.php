@@ -4,11 +4,12 @@
         <div class="dashboard-block mt-0 profile-settings-block">
             <h3 class="block-title">Profile Settings</h3>
             <div class="inner-block">
-                {{-- <div class="image">
-                    <img src="assets/images/dashboard/user-image.jpg" alt="#">
-                </div> --}}
-                <form class="profile-setting-form" action="{{ route('update-profile') }}" method="post">
+                <div class="image">
+                    <img src="{{ asset('images/' . Auth::user()->image) }}" alt="Profile Image">
+                </div>
+                <form class="profile-setting-form" action="{{ route('update-profile') }}" method="post" enctype="multipart/form-data">
                     @csrf
+                <input name="image" class="mb-4" type="file">
                     <div class="row">
                         <div class="col-lg-6 col-12">
                             <div class="form-group">

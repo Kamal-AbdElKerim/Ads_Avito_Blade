@@ -27,6 +27,7 @@ class User extends Authenticatable
         'Phone',
         'Status',
         'Password',
+        'image',
     ];
 
     /**
@@ -48,19 +49,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function messages()
-    {
-        return $this->hasMany(message::class, 'sender_id');
-    }
-
-    public function receivedMessages()
-    {
-        return $this->hasMany(message::class, 'ReceiverID');
-    }
-    public function favorites()
-    {
-        return $this->hasMany(message::class, 'UserID');
-    }
+ 
 
     public function notifications()
     {

@@ -45,7 +45,7 @@
                         </div>
                     @endif
 
-                        <form id="registrationForm" method="POST" action="{{ route('register_post') }}">
+                        <form id="registrationForm" method="POST" action="{{ route('register_post') }}" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
                                 <label>Username</label>
@@ -67,12 +67,17 @@
                                 <input type="password" name="password" id="password">
                                 <span id="passwordError" class="error text-danger"></span>
                             </div>
+                            {{-- <div class="form-group"> --}}
+                             
+                            {{-- </div> --}}
                             <div class="form-group">
                                 <label>Confirm Password</label>
                                 <input type="password" name="password_confirmation" id="confirmPassword">
                                 <span id="confirmPasswordError" class="error text-danger"></span>
                             </div>
-                          
+                            <label class="mb-2">image</label><br>
+
+                            <input class="mb-5"  type="file" name="image"  >
                             <div class="button">
                                 <button type="submit" class="btn">Registration</button>
                             </div>

@@ -4572,19 +4572,22 @@ ol {
 }
 
 .messages-body .chat-list .single-chat-head li.left .text {
-  background: #f3f2fc;
   padding: 5px 20px;
   font-size: 16px;
   line-height: 25px;
   color: #666;
-  border-radius: 18px;
   word-wrap: break-word;
   position: relative;
   font-weight: 400;
   font-family: 'Jost', sans-serif;
+
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #f5f5f5;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.messages-body .chat-list .single-chat-head li.left .text::before {
+/* .messages-body .chat-list .single-chat-head li.left .text::before {
   position: absolute;
   left: -16px;
   bottom: 16px;
@@ -4593,7 +4596,7 @@ ol {
   border-left-color: transparent;
   border-top-color: transparent;
   border-bottom-color: transparent;
-}
+} */
 
 .messages-body .chat-list .single-chat-head li.left .text .time {
   display: block;
@@ -4629,6 +4632,14 @@ ol {
   position: relative;
   font-weight: 400;
   font-family: 'Jost', sans-serif;
+}
+
+.btn_more{
+  background-color: #c5ebff;
+  border-radius: 15px;
+}
+.btn_more:hover{
+  background-color: #9bd3f1;
 }
 
 .messages-body .chat-list .single-chat-head li.right .text::before {
@@ -4688,11 +4699,13 @@ ol {
 
 .messages-body .chat-list .reply-block input {
   height: 100%;
-  width: 280px;
+  width: 350px;
   color: #081828;
   border: none;
-  padding: 0px 20px;
+  padding: 15px 20px;
   font-size: 15px;
+  background-color: #cbdae27a;
+  border-radius: 30px;
 }
 
 .messages-body .chat-list .reply-block button {
@@ -4707,13 +4720,43 @@ ol {
   float: right;
   border: none;
   font-size: 18px;
-  position: relative;
-  top: -4px;
+  /* position: relative; */
+  top: -1px;
   -webkit-transition: all 0.4s ease;
   transition: all 0.4s ease;
   padding-left: 3px;
   padding-bottom: 3px;
 }
+
+/* styles.css */
+
+/* Chat container */
+.chat-container {
+
+  overflow-y: auto; /* Enable vertical scrolling if content exceeds height */
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #f5f5f5;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Chat message style */
+.chat-message {
+  /* background-color: #fff; */
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+/* Message text style */
+.message {
+  font-size: 16px;
+  color: #333;
+  line-height: 1.5;
+  margin: 0;
+}
+
 
 .messages-body .chat-list .reply-block button img {
   width: 17px;

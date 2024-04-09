@@ -59,14 +59,25 @@ class LoginController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'phone' => 'required|string|max:255',
+            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048', 
+
         ], [
             'name.required' => 'The name field is required.',
             'phone.required' => 'The phone field is required.',
         ]);
 
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $imageName = time().'.'.$image->getClientOriginalExtension();
+            $image->move(public_path('images'), $imageName);
+        } else {
+            $imageName = Auth()->user()->image; 
+        }
+
         $user = User::find(auth()->id());
         $user->name = $request->name;
         $user->phone = $request->phone;
+        $user->image = $imageName;
         $user->save();
 
         return redirect()->back()->with('success', 'Profile updated successfully!');

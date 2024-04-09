@@ -55,7 +55,7 @@
                     <div class="nav-inner">
                         <nav class="navbar navbar-expand-lg">
                             <a class="navbar-brand" href="index.html">
-                                <img src=" {{URL::asset('frontend\assets\ADS-Logo_RGB.png')}}" height="50px"  alt="Logo">
+                                <img src=" {{URL::asset('frontend\assets\ADS-Logo_RGB.svg')}}" height="85px"  alt="Logo">
                             </a>
                             <button class="navbar-toggler mobile-menu-btn" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -72,7 +72,7 @@
                                             aria-label="Toggle navigation">Home</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="{{ (Route::currentRouteName() == 'Category') ? 'active' : '' }}" href="{{ route('Category') }}"  aria-label="Toggle navigation">Categories</a>
+                                        <a class="{{ (Route::currentRouteName() == 'Category') ? 'active' : '' }}" href="{{ route('Category') }}"  aria-label="Toggle navigation">Product</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class=" dd-menu collapsed" href="{{ route('ProfileSettings') }}"
@@ -143,9 +143,9 @@
                     <!-- Start Dashboard Sidebar -->
                     <div class="dashboard-sidebar">
                         <div class="user-image">
-                            <img src="{{ asset('frontend/assets/images/dashboard/user-image.jpg') }}" alt="#">
+                            <img src="{{ asset('images/' . Auth::user()->image) }}" alt="Profile Image">
                             <h3>{{ Auth()->user()->name }}
-                                <span><a href="javascript:void(0)">@username</a></span>
+                                <span><a href="javascript:void(0)">{{ Auth()->user()->email }}</a></span>
                             </h3>
                         </div>
                         <div class="dashboard-menu">

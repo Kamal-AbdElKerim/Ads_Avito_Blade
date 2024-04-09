@@ -338,8 +338,8 @@
                             <div class="single-block author">
                                 <h3>Author</h3>
                                 <div class="content">
-                                    <img src=" {{ URL::asset('frontend/assets/images/testimonial/testi2.jpg') }}"
-                                        alt="#">
+                                    <img src="{{ asset('images/' . $ads->users->image) }}" alt="Profile Image">
+
                                     <h4>{{ $ads->users->name }}</h4>
                                     <span>Member Since {{ $ads->users->created_at->format('F j, Y') }}</span>
                                     <a href="javascript:void(0)" class="see-all">See All Ads</a>
