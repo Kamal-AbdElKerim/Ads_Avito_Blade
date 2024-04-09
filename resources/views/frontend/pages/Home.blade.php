@@ -127,45 +127,28 @@
                     @foreach ($ads as $ad)
                         
                  
+                
                     <div class="col-lg-4 col-md-6 col-12">
-                        <!-- Start Single Grid -->
-                        <div class="single-grid wow fadeInUp" data-wow-delay=".1s">
+                        <!-- Start Single Item -->
+                        <div class="single-item-grid">
                             <div class="image">
-                                <a href="item-details.html" class="thumbnail"><img
-                                        src="{{ asset($ad->images[0]->ImageURL) }}" alt="#"></a>
-                                <div class="author">
-                                    <div class="author-image">
-                                        <a href="javascript:void(0)"><img src="{{ asset('frontend/assets/images/items-grid/author-1.jpg') }}"
-                                                alt="#">
-                                            <span>{{ $ad->users->name }}</span></a>
-                                    </div>
-                                    <p class="sale">For Sale</p>
-                                </div>
+                                <a href=" {{ route('SinglPage',$ad->id) }}" ><img
+                                        src="{{ asset($ad->images[0]->ImageURL) }}"
+                                        width="248px" height="248px" alt="#"></a>
+                                <i class=" cross-badge lni lni-bolt"></i>
+                                <span class="flat-badge sale">Sale</span>
                             </div>
                             <div class="content">
-                                <div class="top-content">
-                                    <a href="javascript:void(0)" class="tag">{{ $ad->categories->Name }}</a>
-                                    <h3 class="title">
-                                        <a href="item-details.html">{{ $ad->Title }}</a>
-                                    </h3>
-                                    <p class="update-time">{{ $ad->updated_at->diffForHumans() }}</p>
-                                    {{-- <ul class="rating">
-                                        <li><i class="lni lni-star-filled"></i></li>
-                                        <li><i class="lni lni-star-filled"></i></li>
-                                        <li><i class="lni lni-star-filled"></i></li>
-                                        <li><i class="lni lni-star-filled"></i></li>
-                                        <li><i class="lni lni-star-filled"></i></li>
-                                        <li><a href="javascript:void(0)">(35)</a></li>
-                                    </ul> --}}
-                                    <ul class="info-list">
-                                        <li><a href="javascript:void(0)"><i class="lni lni-map-marker"></i> {{ $ad->City }},
-                                            {{ $ad->Location }}</a></li>
-                                        <li><a href="javascript:void(0)"><i class="lni lni-timer"></i> Feb 18, 2023</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="bottom-content">
-                                    <p class="price">Start From: <span>{{ $ad->Price }} MAD</span></p>
+                                <a href="javascript:void(0)" class="tag">{{
+                                    $ad->categories->Name }}</a>
+                                <h3 class="title">
+                                    <a href=" {{ route('SinglPage',$ad->id) }}" >{{ $ad->Title }}</a>
+                                </h3>
+                                <p class="location"><a href="javascript:void(0)"><i
+                                            class="lni lni-map-marker">
+                                        </i>{{ $ad->City }}</a></p>
+                                <ul class="info">
+                                    <li class="price">{{ $ad->Price }} MAD</li>
                                     @if ($ad->favorites->contains('UserID', Auth()->id()))
                                     <li class="like">
                                         <a href="{{ route('remove_favorite', $ad->id) }}">
@@ -179,10 +162,13 @@
                                         </a>
                                     </li>
                                 @endif
-                                </div>
+                                
+                                </ul>
                             </div>
                         </div>
-                        <!-- End Single Grid -->
+                        <!-- End Single Item -->
+                       
+
                     </div>
 
                     @endforeach

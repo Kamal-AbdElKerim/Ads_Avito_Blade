@@ -95,17 +95,24 @@
           
             users.forEach(function (user) {
                 const listItem = document.createElement('li');
-                
+
+                // if (user.user1.id === {{ Auth()->id() }}) {
+
+                //     continue
+                    
+                // }
+                const otherUser = user.user1.id !== {{ Auth()->id() }} ? user.user1 : user.user2;
+
 
                 listItem.innerHTML = `
-                <a class='user_hover' onclick="messageUser(${user.id}, '${user.name}')" href="javascript:void(0)"  data-user-id="${user.id}">
+                <a class='user_hover' onclick="messageUser(${otherUser.id}, '${otherUser.name}')" href="javascript:void(0)"  data-user-id="${otherUser.id}">
 
                     <div class="image">
                         <img src="${assetBaseUrl}frontend/assets/images/messages/image1.jpg" alt="#">
                         </div>
-                        <span class="username">${user.name}</span>
+                        <span class="username">${otherUser.name}</span>
                         <span class="short-message">${user.last_message}</span>
-                        <span class="unseen-message">${user.unseen_count}</span>
+                        <span class="unseen-message">${user.ads.Title}</span>
                     
                    
                 </a>

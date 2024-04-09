@@ -6,6 +6,7 @@ use App\Models\Chat;
 use App\Models\User;
 use App\Models\conversation;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Response;
@@ -22,10 +23,18 @@ class ChatController extends Controller
     {
         $authUserId = Auth::id();
 
-        $users = User::where('id', '!=', $authUserId)
-                     ->where('id', '!=', 1)
-                     ->get();
 
+            // $users = Conversation::where(function ($query) use ($authUserId) {
+            //     $query->where('user_1', '==', $authUserId)
+            //         ->orWhere('user_2', '==', $authUserId);
+            // })
+            //  // Eager load the user1 and user2 relationships
+            // ->get();
+
+            $users = Conversation::latest()->where('user_1', $authUserId)
+            ->orWhere('user_2', $authUserId)
+            ->with(['user1', 'user2','ads'])
+            ->get();
        
 
         $data = [
