@@ -19,10 +19,8 @@
     <!-- ========================= CSS here ========================= -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="{{URL::asset('frontend/assets/css/bootstrap.min.css')}}" />
+    <link rel="stylesheet" href="{{ URL::asset('frontend/assets/css/bootstrap.tags.css') }}" />
     <link rel="stylesheet" href="{{URL::asset('frontend/assets/css/LineIcons.2.0.css')}}" />
-    <link rel="stylesheet" href="{{URL::asset('frontend/assets/css/animate.css')}}" />
-    <link rel="stylesheet" href="{{URL::asset('frontend/assets/css/tiny-slider.css')}}" />
-    <link rel="stylesheet" href="{{URL::asset('frontend/assets/css/glightbox.min.css')}}" />
     <link rel="stylesheet" href="{{URL::asset('frontend/assets/css/main.css')}}" />
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="//unpkg.com/alpinejs" defer></script>
@@ -35,17 +33,7 @@
 </head>
 
 <body>
-   
-    <!-- Preloader -->
-    {{-- <div class="preloader">
-        <div class="preloader-inner">
-            <div class="preloader-icon">
-                <span></span>
-                <span></span>
-            </div>
-        </div>
-    </div> --}}
-    <!-- /End Preloader -->
+  
 
     <!-- Start Header Area -->
     <header class="header navbar-area">
@@ -121,13 +109,13 @@
             <div class="row align-items-center">
                 <div class="col-lg-6 col-md-6 col-12">
                     <div class="breadcrumbs-content">
-                        <h1 class="page-title">Post Ad</h1>
+                        <h1 class="page-title"> Ad</h1>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6 col-12">
                     <ul class="breadcrumb-nav">
-                        <li><a href="index.html">Home</a></li>
-                        <li>Post Ad</li>
+                        <li><a href="{{ route('Home') }}">Home</a></li>
+                        <li> Ad</li>
                     </ul>
                 </div>
             </div>
@@ -194,7 +182,6 @@
     </section>
     <!-- End Dashboard Section -->
 
-    {{-- {{ $slot }} --}}
 
 
  <!-- Start Footer Area -->
@@ -290,10 +277,6 @@
 <!-- ========================= JS here ========================= -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 <script src="{{URL::asset('frontend/assets/js/bootstrap.min.js')}}"></script>
-<script src="{{URL::asset('frontend/assets/js/wow.min.js')}}"></script>
-<script src="{{URL::asset('frontend/assets/js/tiny-slider.js')}}"></script>
-<script src="{{URL::asset('frontend/assets/js/glightbox.min.js')}}"></script>
-<script src="{{URL::asset('frontend/assets/js/count-up.min.js')}}"></script>
 <script src="{{URL::asset('frontend/assets/js/main.js')}}"></script>
 <script src="https://kit.fontawesome.com/e9ea9ee727.js" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>

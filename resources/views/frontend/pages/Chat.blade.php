@@ -148,10 +148,10 @@
 
                     });
                 })
-                .catch(function(error) {
-                    // handle error
-                    console.log(error);
-                })
+                // .catch(function(error) {
+                //     // handle error
+                //     console.log(error);
+                // })
                 .finally(function() {
                     // always executed
                 });
@@ -162,84 +162,87 @@
 
         var assetBaseUrl = '{{ asset('') }}';
 
-        function messageUser(user_id, name_id, image_url, title_ads, Price_ads, ID_ads) {
 
+        
 
-            document.getElementById('info_ads').innerHTML = `
-            <div class="row">            
-              <h6 class=" col-8 ">${Price_ads} MAD - <span>${title_ads}</span></h6>
-                       </div>
-                       <a class="btn btn_more mt-2" href="/SinglPage/${ID_ads}">more details</a>
-             <hr>
+        let messageInterval; // Variable to hold the interval reference
 
-  `;
+function messageUser(user_id, name_id, image_url, title_ads, Price_ads, ID_ads) {
+    // Clear existing interval (if any)
+    clearInterval(messageInterval);
 
+    // Display ad and user information
+    document.getElementById('info_ads').innerHTML = `
+        <div class="row">            
+            <h6 class="col-8">${Price_ads} MAD - <span>${title_ads}</span></h6>
+        </div>
+        <a class="btn btn_more mt-2" href="/SinglPage/${ID_ads}">More Details</a>
+        <hr>
+    `;
 
-            document.getElementById('name_user').textContent = name_id;
+    // Display the user's name in the chat header
+    document.getElementById('name_user').textContent = name_id;
 
+    // Deselect all other user links in the conversation list
+    const links = document.querySelectorAll('#userMessagesList a');
+    links.forEach(link => {
+        link.classList.remove('toggle_user');
+    });
 
-            const links = document.querySelectorAll('#userMessagesList a');
-            links.forEach(link => {
-                link.classList.remove('toggle_user');
-            });
+    // Select the clicked user link and apply a toggle class
+    const clickedLink = document.querySelector(`#userMessagesList a[data-user-id="${user_id}"]`);
+    if (clickedLink) {
+        clickedLink.classList.add('toggle_user');
+    }
 
-            const clickedLink = document.querySelector(`#userMessagesList a[data-user-id="${user_id}"]`);
-            if (clickedLink) {
-                clickedLink.classList.add('toggle_user');
-            }
-            console.log(`User with ID ${user_id} clicked.`);
+    // Clear chat messages
+    document.getElementById('chat_messages').innerHTML = '';
 
+    // Set up a new interval to fetch and display messages periodically
+    messageInterval = setInterval(async () => {
+        await  axios.get('/user_message/' + user_id)
+            .then(function(response) {
+                console.log('messages:', response);
+                document.getElementById('chat_messages').innerHTML = '';
 
-            document.getElementById('chat_messages').innerHTML = '';
+                // Set the authenticated user ID
+                document.getElementById('user_id').value = response.data.user_id;
 
-            axios.get('/user_message/' + user_id)
-                .then(function(response) {
-                    console.log('messages:', response);
+                // Iterate over fetched messages and display them
+                response.data.messages.forEach(function(message) {
+                    var isCurrentUserMessage = (message.from_id == user_id);
+                    var liClass = isCurrentUserMessage ? 'left ' : 'right';
+                    var li = document.createElement('li');
+                    li.className = liClass;
 
-                    document.getElementById('user_id').value = response.data.user_id;
-                    response.data.messages.forEach(function(message) {
-                        // Determine if the message is from the current user or other user
-                        var isCurrentUserMessage = (message.from_id == user_id);
+                    if (isCurrentUserMessage) {
+                        var imgSrc = image_url;
+                        var img = document.createElement('img');
+                        img.src = imgSrc;
+                        img.alt = '#';
+                        li.appendChild(img);
+                    }
 
-                        // Create <li> element with appropriate class based on message sender
-                        var liClass = isCurrentUserMessage ? 'left ' : 'right';
-                        var li = document.createElement('li');
-                        li.className = liClass;
+                    var p = document.createElement('p');
+                    p.className = isCurrentUserMessage ? 'text text-start' : 'text text-end';
+                    p.textContent = message.message;
 
-                        // Create <img> element for user avatar (replace 'image' path as needed)
-                        if (isCurrentUserMessage) {
-                            var imgSrc = image_url;
-                            var img = document.createElement('img');
-                            img.src = imgSrc;
-                            img.alt = '#';
-                        }
+                    var span = document.createElement('span');
+                    span.className = isCurrentUserMessage ? 'time text-start' : 'time text-end';
+                    span.textContent = formatTime(message.created_at);
 
-
-                        // Create <p> element for message text
-                        var p = document.createElement('p');
-                        p.className = isCurrentUserMessage ? 'text text-start ' : 'text text-end';
-                        p.textContent = message.message;
-
-                        // Create <span> element for message timestamp
-                        var span = document.createElement('span');
-                        span.className = isCurrentUserMessage ? 'time  text-start' : 'time text-end';
-                        span.textContent = formatTime(message.created_at);
-                        if (isCurrentUserMessage) {
-
-                            li.appendChild(img);
-                        }
-                        li.appendChild(p);
-                        li.appendChild(span);
-
-                        document.getElementById('chat_messages').appendChild(li);
-                    });
-                    scrollToBottomOfChat()
-
-                })
-                .catch(function(error) {
-                    console.error('Error fetching messages:', error);
+                    li.appendChild(p);
+                    li.appendChild(span);
+                    document.getElementById('chat_messages').appendChild(li);
                 });
-        }
+            })
+            scrollToBottomOfChat()
+            // .catch(function(error) {
+            //     console.error('Error fetching messages:', error);
+            // });
+    }, 1000);
+}
+
 
         function formatTime(timestamp) {
             return new Date(timestamp).toLocaleTimeString('en-US', {
@@ -270,9 +273,9 @@
                     // Optionally, scroll to the bottom of the chat messages
                     scrollToBottomOfChat();
                 })
-                .catch(function(error) {
-                    console.error('Error sending message:', error);
-                });
+                // .catch(function(error) {
+                //     console.error('Error sending message:', error);
+                // });
         }
 
         function appendMessageToChat(message) {

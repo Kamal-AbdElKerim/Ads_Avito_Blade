@@ -90,7 +90,7 @@
     
                     <div class="col-lg-2 col-md-3 col-12">
                         <!-- Start Single Category -->
-                        <a href="javascript:void(0)" class="single-cat wow fadeInUp" data-wow-delay=".1s">
+                        <a   href="javascript:void(0)" class="single-cat wow fadeInUp" data-wow-delay=".1s">
                             <div class="icon">
                                 <img src="{{ asset($categorie->icon) }}" alt="#">
                             </div>

@@ -145,10 +145,7 @@
                                 </ul>
                                 <form action="javascript:void(0)">
                                     <div class="reply-block">
-                                        <ul class="add-media-list">
-                                            <li><a href="javascript:void(0)"><i class="lni lni-link"></i></a></li>
-                                            <li><a href="javascript:void(0)"><i class="lni lni-image"></i></a></li>
-                                        </ul>
+                                      
 
                                         <input id="user_id" value="{{ $ads->users->id }}" type="hidden">
                                         <input id="ads_id" value="{{ $ads->id }}" type="hidden">
@@ -156,8 +153,8 @@
                                         <button onclick="add_message()" class="reply-btn"><img
                                                 src="{{ asset('frontend/assets/images/messages/send.svg') }}"
                                                 alt="#"></button>
+                                            </div>
                                 </form>
-                            </div>
                         </div>
 
 
@@ -342,41 +339,11 @@
 
                                     <h4>{{ $ads->users->name }}</h4>
                                     <span>Member Since {{ $ads->users->created_at->format('F j, Y') }}</span>
-                                    <a href="javascript:void(0)" class="see-all">See All Ads</a>
+                                    {{-- <a href="javascript:void(0)" class="see-all">See All Ads</a> --}}
                                 </div>
                             </div>
                             <!-- End Single Block -->
-                            <!-- Start Single Block -->
-                            <div class="single-block contant-seller comment-form ">
-                                <h3>Contact Seller</h3>
-                                <form action="#" method="POST">
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <div class="form-box form-group">
-                                                <input type="text" name="name"
-                                                    class="form-control form-control-custom" placeholder="Your Name" />
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <div class="form-box form-group">
-                                                <input type="email" name="email"
-                                                    class="form-control form-control-custom" placeholder="Your Email" />
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <div class="form-box form-group">
-                                                <textarea name="#" class="form-control form-control-custom" placeholder="Your Message"></textarea>
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <div class="button">
-                                                <button type="submit" class="btn">Send Message</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                            <!-- End Single Block -->
+                         
 
                         </div>
                     </div>

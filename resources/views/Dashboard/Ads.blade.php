@@ -23,9 +23,7 @@
                   <th>
                     <h6>Description</h6>
                   </th>
-                  <th>
-                    <h6>brand</h6>
-                  </th>
+               
                   <th>
                       <h6>catgaory</h6>
                   </th>
@@ -64,14 +62,12 @@
                   <td class="min-width">
                     <p><a href="#0">{{ $Ad->Description }}</a></p>
                   </td>
-                  <td class="min-width">
-                    <p>{{ $Ad->brand }}</p>
-                  </td>
+               
                   <td class="min-width">
                     <p>{{ $Ad->categories->Name }}</p>
                   </td>
                   <td class="min-width">
-                    <p>{{ $Ad->users->Username }}</p>
+                    <p>{{ $Ad->users->name }}</p>
                   </td>
                   <td class="min-width">
                     <p>{{ $Ad->Price }}</p>
