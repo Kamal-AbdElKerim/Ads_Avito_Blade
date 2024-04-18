@@ -110,7 +110,7 @@ class AddAds extends Component
     
     }
 
-    public function updatedUplodeImg($photos)
+    public function updatedUplodeImg()
     {
 
 

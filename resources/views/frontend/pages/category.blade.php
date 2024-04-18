@@ -76,6 +76,7 @@
                         <!-- Start Single Widget -->
                         <div class="single-widget ">
                             <h3>Citys</h3>
+                            <div class="single-widget search">
                             <div class=" d-flex  justify-content-between ">
                                 <select class="form-select w-75 " aria-label="Default select example"
                                     wire:model='CitySearch'>
@@ -86,9 +87,15 @@
 
                                     @endforeach
                                 </select>
-                                <button wire:click='SearchCity' class=" w-25  ms-3  btn btn-outline-primary">
+                                {{-- <button wire:click='SearchCity' class=" w-25  ms-3  btn btn-outline-primary">
                                     <h6><i class="fa-solid fa-magnifying-glass-location"></i></h6>
-                                </button>
+                                </button> --}}
+                                    <form action="javascript:void(0)">
+                                       
+                                        <button wire:click='SearchCity' ><i class="lni lni-search-alt"></i></button>
+                                    </form>
+                                </div>
+
                             </div>
 
 
@@ -105,30 +112,8 @@
                             </div>
                         </div>
                         <!-- End Single Widget -->
-                        {{--
-                        <!-- Start Single Widget -->
-                        <div class="single-widget condition">
-                            <h3>Condition</h3>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault1">
-                                <label class="form-check-label" for="flexCheckDefault1">
-                                    All
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault2">
-                                <label class="form-check-label" for="flexCheckDefault2">
-                                    New
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault3">
-                                <label class="form-check-label" for="flexCheckDefault3">
-                                    Used
-                                </label>
-                            </div>
-                        </div>
-                        <!-- End Single Widget --> --}}
+                     
+                        <!-- End Single Widget --> 
                     </div>
                 </div>
                 <div class="col-lg-9 col-md-8 col-12">
@@ -138,7 +123,7 @@
                                 <div class="category-grid-topbar">
                                     <div class="row align-items-center">
                                         <div class="col-lg-6 col-md-6 col-12">
-                                            <h3 class="title">Showing 1-12 of 21 ads found</h3>
+                                            <h3 class="title">Showing {{ count($ads) }} ads found</h3>
                                         </div>
                                         <div class="col-lg-6 col-md-6 col-12">
                                             <nav>

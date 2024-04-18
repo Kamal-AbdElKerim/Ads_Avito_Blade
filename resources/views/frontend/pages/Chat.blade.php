@@ -48,10 +48,12 @@
                             </div>
                             <ul id="chat_messages" class="single-chat-head">
 
-                                <div class="container mt-5">
+                                <div class="container ">
                                     <div class="chat-container">
-                                        <div class="chat-message">
-                                            <p class="message">Welcome to ChatAds! How can we assist you today?</p>
+                                        <div class="chat-message text-center ">
+                                            <p class="message">Welcome to ChatAds! </p>
+                                            <img src="{{ asset('frontend/assets/ads-chat.png') }}" width="180px" height="150px" alt="">
+                                            <p class="message">How can we assist you today?</p>
                                         </div>
                                         <!-- More chat messages can be added here -->
                                     </div>
@@ -199,8 +201,8 @@ function messageUser(user_id, name_id, image_url, title_ads, Price_ads, ID_ads) 
     document.getElementById('chat_messages').innerHTML = '';
 
     // Set up a new interval to fetch and display messages periodically
-    messageInterval = setInterval(async () => {
-        await  axios.get('/user_message/' + user_id)
+    // messageInterval = setInterval(async () => {
+         axios.get('/user_message/' + user_id)
             .then(function(response) {
                 console.log('messages:', response);
                 document.getElementById('chat_messages').innerHTML = '';
@@ -234,13 +236,14 @@ function messageUser(user_id, name_id, image_url, title_ads, Price_ads, ID_ads) 
                     li.appendChild(p);
                     li.appendChild(span);
                     document.getElementById('chat_messages').appendChild(li);
+                    scrollToBottomOfChat()
                 });
             })
             scrollToBottomOfChat()
             // .catch(function(error) {
             //     console.error('Error fetching messages:', error);
             // });
-    }, 1000);
+    // }, 1000);
 }
 
 
